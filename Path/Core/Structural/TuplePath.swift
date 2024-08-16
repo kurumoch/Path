@@ -7,8 +7,30 @@
 
 import Foundation
 
-struct TuplePath<each P: Path>: Path {
-    typealias Body = <#type#>
+struct TuplePath<each P: Path>: PrimitivePath, GenericPath {
+    let content: (repeat each P)
     
+    func append(to parent: Node) {
+
+        func append<P0: Path>(path: P0) {
+            let child = Node(
+                parent: parent,
+                path: path.composed
+            )
+            parent.appendChild(child: child)
+        }
+        
+        repeat append(path: each content)
+    }
     
+    func update(node: Node) {
+        var index = 0
+        
+        func update<P0: Path>(path: P0) {
+            node.updateChild(at: index, with: path.composed)
+            index += 1
+        }
+        
+        repeat update(path: each content)
+    }
 }

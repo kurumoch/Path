@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import UIKit
+import Observation
+
+struct Tab: PathRepresentable {
+    
+    var selected = 0
+    
+    func make() -> UITabBarController {
+        UITabBarController()
+    }
+    
+    func update(vc: UITabBarController) {
+        vc.selectedIndex = selected
+    }
+}

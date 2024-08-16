@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct EmptyPath: PrimitivePath, GenericPath {
+    func append(to parent: Node) {}
+    func update(node: Node) {}
+}

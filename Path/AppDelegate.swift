@@ -10,9 +10,19 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
+    var root: Root?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let window = UIWindow()
+        self.window = window
+        window.makeKeyAndVisible()
+        
+        root = Root(window: window) {
+            MainPath()
+        }
+        
         // Override point for customization after application launch.
         return true
     }

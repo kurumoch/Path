@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import UIKit
+
+protocol Renderable {
+    func vc() -> UIViewController
+}
+
+extension Renderable where Self: PathRepresentable {
+    func vc() -> UIViewController {
+        make()
+    }
+}

@@ -6,3 +6,39 @@
 //
 
 import Foundation
+
+struct ConditionalPath<TrueContent: Path, FalseContent: Path>: PrimitivePath, GenericPath {
+    
+    enum ConditionalContent {
+        case a(TrueContent)
+        case b(FalseContent)
+    }
+    
+    let content: ConditionalContent
+    
+    func append(to parent: Node) {
+        switch content {
+        case .a(let trueContent):
+            let child = Node(
+                parent: parent,
+                path: trueContent.composed
+            )
+            parent.appendChild(child: child)
+        case .b(let falseContent):
+            let child = Node(
+                parent: parent,
+                path: falseContent.composed
+            )
+            parent.appendChild(child: child)
+        }
+    }
+    
+    func update(node: Node) {
+        switch content {
+        case .a(let trueContent):
+            node.updateChild(at: 0, with: trueContent.composed)
+        case .b(let falseContent):
+            node.updateChild(at: 0, with: falseContent.composed)
+        }
+    }
+}

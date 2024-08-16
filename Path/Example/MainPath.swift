@@ -6,3 +6,21 @@
 //
 
 import Foundation
+import UIKit
+
+struct MainPath: PathRepresentable {
+    
+    func make() -> MainViewController {
+        MainViewController(nibName: nil, bundle: nil)
+    }
+    
+    func update(vc: MainViewController) {
+        
+    }
+}
+
+final class MainViewController: UIViewController {
+    override func viewDidLoad() {
+        view.backgroundColor = .red
+    }
+}

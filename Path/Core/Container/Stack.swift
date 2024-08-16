@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import UIKit
+
+struct Stack: PathRepresentable {
+    
+    func make() -> UINavigationController {
+        UINavigationController()
+    }
+    
+    func update(vc: UINavigationController) {
+        
+    }
+}
