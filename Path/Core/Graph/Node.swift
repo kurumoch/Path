@@ -13,25 +13,25 @@ final class Node {
     private var children: [Node] = []
     var invalidationHandler: ((Node) -> ())?
     let path: GenericPath
-    let renderable: Renderable?
     private var coordinator: Any?
+    private var _screen: Screen?
+    var screen: Screen? {
+        get { _screen ?? children.first { $0.screen != nil }?.screen }
+        set { _screen = newValue }
+    }
     
-    init(
-        parent: Node?,
-        path: GenericPath,
-        renderable: Renderable? = nil
-    ) {
+    init(parent: Node?, path: GenericPath) {
         self.parent = parent
         self.path = path
-        self.renderable = renderable
     }
     
     func build() {
         coordinator = path.makePayload()
-        if let parent {
-            path.append(to: parent)
-        }
+        path.append(to: self)
         
+        children.compactMap { $0.screen }.enumerated().forEach {
+            _screen?.addSubscreen($0.element, at: $0.offset)
+        }
     }
     
     func addChild(at index: Int, child: Node) {
@@ -39,19 +39,18 @@ final class Node {
         children.insert(child, at: index)
     }
     
-    func appendChild(child: Node) {
-        child.invalidationHandler = invalidationHandler
-        children.append(child)
-    }
-    
     func remove(at index: Int) {
         children.remove(at: index)
     }
     
     func updateChild(at index: Int, with path: GenericPath) {
-        build()
         if index < children.count {
             path.update(node: children[index])
         }
+    }
+    
+    // Обновление для вызова update в screen
+    func updateScreen() {
+        screen?.viewController = (screen?.vc())!
     }
 }

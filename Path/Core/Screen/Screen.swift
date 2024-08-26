@@ -8,24 +8,21 @@
 import Foundation
 import UIKit
 
-final class Screen {
+class Screen {
     private(set) var children: [Screen] = []
     private(set) var parent: Screen?
     
     private var index: Int = 0
     
     var window: UIWindow?
-    var renderable: Renderable {
-        fatalError()
-    }
-    
-    private(set) lazy var viewController = renderable.vc()
     
     var root: Screen { parent?.root ?? self }
     
     func vc() -> UIViewController {
         UIViewController()
     }
+    
+    lazy var viewController = vc()
     
     func addSubscreen(_ screen: Screen, at index: Int) {
         self.children.insert(screen, at: index)

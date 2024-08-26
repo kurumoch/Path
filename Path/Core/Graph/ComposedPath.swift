@@ -12,7 +12,7 @@ struct ComposedPath<P: Path>: GenericPath {
     let path: P
     
     func append(to parent: Node) {
-        parent.appendChild(child: Node(parent: parent, path: path.body.composed))
+        parent.addChild(at: 0, child: Node(parent: parent, path: path.body.composed))
     }
     
     func update(node: Node) {

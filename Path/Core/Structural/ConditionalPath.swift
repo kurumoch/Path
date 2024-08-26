@@ -23,13 +23,13 @@ struct ConditionalPath<TrueContent: Path, FalseContent: Path>: PrimitivePath, Ge
                 parent: parent,
                 path: trueContent.composed
             )
-            parent.appendChild(child: child)
+            parent.addChild(at: 0, child: child)
         case .b(let falseContent):
             let child = Node(
                 parent: parent,
                 path: falseContent.composed
             )
-            parent.appendChild(child: child)
+            parent.addChild(at: 0, child: child)
         }
     }
     

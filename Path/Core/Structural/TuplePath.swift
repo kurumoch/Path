@@ -11,13 +11,17 @@ struct TuplePath<each P: Path>: PrimitivePath, GenericPath {
     let content: (repeat each P)
     
     func append(to parent: Node) {
+        
+        var idx = 0
 
         func append<P0: Path>(path: P0) {
             let child = Node(
                 parent: parent,
                 path: path.composed
             )
-            parent.appendChild(child: child)
+            child.build()
+            parent.addChild(at: idx, child: child)
+            idx += 1
         }
         
         repeat append(path: each content)

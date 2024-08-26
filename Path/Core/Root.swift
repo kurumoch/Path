@@ -17,7 +17,6 @@ final class Root {
     }
     
     private var root: Node?
-    
     private var invalidated: [Node] = []
     
     init(window: UIWindow, @PathBuilder path: () -> any Path) {
@@ -33,8 +32,17 @@ final class Root {
             root?.invalidationHandler = { [weak self] in self?.invalidated.append($0) }
             path.append(to: root!)
             path.update(node: root!)
+            showRootScreen()
+        } else {
+            path.update(node: root!)
         }
-        
-        window.rootViewController = root?.renderable?.vc()
+    }
+    
+    private func showRootScreen() {
+//        root?.updateScreen()
+        guard let rootScreen = root?.screen else { return }
+        let rootViewController = rootScreen.vc()
+        window.rootViewController = rootViewController
+        window.makeKeyAndVisible()
     }
 }

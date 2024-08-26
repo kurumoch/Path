@@ -11,7 +11,8 @@ import UIKit
 struct MainPath: PathRepresentable {
     
     func make() -> MainViewController {
-        MainViewController(nibName: nil, bundle: nil)
+        let vc = MainViewController(nibName: nil, bundle: nil)
+        return vc
     }
     
     func update(vc: MainViewController) {
@@ -22,5 +23,6 @@ struct MainPath: PathRepresentable {
 final class MainViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .red
+        tabBarItem.title = "\(Int.random(in: 0 ..< 100))"
     }
 }

@@ -25,3 +25,23 @@ extension PathRepresentable where Coordinator == Void {
         ()
     }
 }
+
+extension PathRepresentable {
+    func append(to parent: Node) {
+        let node = Node(parent: parent, path: self)
+        node.screen = RepresentableScreen { make() }
+        parent.addChild(at: 0, child: node)
+    }
+}
+
+private class RepresentableScreen: Screen {
+    internal init(factory: @escaping () -> UIViewController) {
+        self.factory = factory
+    }
+    
+    let factory: () -> UIViewController
+    
+    override func vc() -> UIViewController {
+        factory()
+    }
+}

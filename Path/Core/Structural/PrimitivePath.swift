@@ -18,7 +18,7 @@ extension PrimitivePath where Body == Never {
     var body: Never { fatalError() }
 
     func append(to parent: Node) {
-        parent.appendChild(child: Node(parent: parent, path: self))
+        parent.addChild(at: 0, child: Node(parent: parent, path: self))
     }
     
     func update(node: Node) {
