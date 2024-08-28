@@ -8,12 +8,25 @@
 import Foundation
 import UIKit
 
+struct PathRepresentableContext {
+    
+    var wrapping: Node
+    
+    func append(_ path: any Path) {
+        let node = Node(parent: wrapping, path: path.composed)
+        wrapping.addChild(at: 0, child: node)
+        node.build()
+        node.screen = wrapping.screen
+        wrapping.updateScreen()
+    }
+}
+
 protocol PathRepresentable: Path, PrimitivePath where Self.Body == Never {
     
     associatedtype VCType: UIViewController
     associatedtype Coordinator = Void
     
-    func make() -> VCType
+    func make(context: PathRepresentableContext) -> VCType
     
     func update(vc: VCType)
     
@@ -29,7 +42,8 @@ extension PathRepresentable where Coordinator == Void {
 extension PathRepresentable {
     func append(to parent: Node) {
         let node = Node(parent: parent, path: self)
-        node.screen = RepresentableScreen { make() }
+        let context = PathRepresentableContext(wrapping: node)
+        node.screen = RepresentableScreen { make(context: context) }
         parent.addChild(at: 0, child: node)
     }
 }

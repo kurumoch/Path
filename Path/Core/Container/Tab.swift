@@ -14,9 +14,8 @@ struct Tab<Content: Path>: PrimitivePath {
     @PathBlockBuilder var content: () -> Content
     
     func append(to parent: Node) {
-        let tabScreen = TabScreen()
         let node = Node(parent: parent, path: content().composed)
-        node.screen = tabScreen
+        node.screen = TabScreen()
         parent.addChild(at: 0, child: node)
         node.build()
     }

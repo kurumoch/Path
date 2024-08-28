@@ -15,14 +15,14 @@ import Foundation
  
     var body: some Path {
  
-        TabNode {
-            MainNode { action in
+        Tab {
+            Main { action in
                 switch action {
                     case .details(let info):
-                        DetailsNode(info)
+                        Details(info)
                             .presentationStyle(.interactive(info.sourceView))
                     case .newProduct:
-                        NewProductNode { productType in
+                        NewProduct { productType in
                             switch productType {
                                 // ...
                             }
@@ -30,24 +30,23 @@ import Foundation
                 }
             }.icon("Main")
  
-            PaymentsNode { paymentType in
+            Payments { paymentType in
                 switch paymentType:
                     case .c2c:
-                        C2CNode { info in
-                            C2CPaymentNode { success in
+                        C2C { info in
+                            C2CPayment { success in
                                 success
-                                    ? C2CSuccessNode { navigator.popToRoot() }
-                                    : C2CFailureNode { navigator.pop() }
+                                    ? C2CSuccess { navigator.popToRoot() }
+                                    : C2CFailure { navigator.pop() }
                             }
                         }
                     case .phoneTransfer:
-                        PhoneTransferNode()
+                        PhoneTransfer()
                     // ...
             }
  
-            AboutNode()
+            About()
                 .icon("About")
-            
         }
     }
  }

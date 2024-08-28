@@ -21,7 +21,6 @@
 		BAE732322C56834200773DB2 /* PathRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE732312C56834200773DB2 /* PathRepresentable.swift */; };
 		BAE732342C56836A00773DB2 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE732332C56836A00773DB2 /* Tab.swift */; };
 		BAE732362C56837700773DB2 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE732352C56837700773DB2 /* Stack.swift */; };
-		BAE732392C56854000773DB2 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE732382C56854000773DB2 /* Container.swift */; };
 		BAE7323C2C5687E700773DB2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7323B2C5687E700773DB2 /* Node.swift */; };
 		BAE7323E2C56892300773DB2 /* GenericPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7323D2C56892300773DB2 /* GenericPath.swift */; };
 		BAE732422C568F4D00773DB2 /* PrimitivePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE732412C568F4D00773DB2 /* PrimitivePath.swift */; };
@@ -45,7 +44,6 @@
 		BAE732312C56834200773DB2 /* PathRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathRepresentable.swift; sourceTree = "<group>"; };
 		BAE732332C56836A00773DB2 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		BAE732352C56837700773DB2 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
-		BAE732382C56854000773DB2 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		BAE7323B2C5687E700773DB2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		BAE7323D2C56892300773DB2 /* GenericPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericPath.swift; sourceTree = "<group>"; };
 		BAE732412C568F4D00773DB2 /* PrimitivePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitivePath.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 			children = (
 				BAE732352C56837700773DB2 /* Stack.swift */,
 				BAE732332C56836A00773DB2 /* Tab.swift */,
-				BAE732382C56854000773DB2 /* Container.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -246,7 +243,6 @@
 				BA30991D2C54C988003859EB /* AppDelegate.swift in Sources */,
 				BAE732212C565B0500773DB2 /* Path.swift in Sources */,
 				BAE7322F2C5679C900773DB2 /* MainPath.swift in Sources */,
-				BAE732392C56854000773DB2 /* Container.swift in Sources */,
 				BAE732232C56628900773DB2 /* Root.swift in Sources */,
 				BAE732272C566D7400773DB2 /* TuplePath.swift in Sources */,
 			);

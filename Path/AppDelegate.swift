@@ -21,7 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         root = Root(window: window) {
             Tab {
-                MainPath()
+                Stack {
+                    MainPath {
+                        MainPath {
+                            EmptyPath()
+                        }
+                    }
+                }
+                
                 MainPath()
             }
         }

@@ -16,13 +16,18 @@ final class Node {
     private var coordinator: Any?
     private var _screen: Screen?
     var screen: Screen? {
-        get { _screen ?? children.first { $0.screen != nil }?.screen }
+        get { _screen ?? child() }
         set { _screen = newValue }
+    }
+    
+    func child() -> Screen? {
+        children.first { $0.screen != nil }?.screen
     }
     
     init(parent: Node?, path: GenericPath) {
         self.parent = parent
         self.path = path
+        invalidationHandler = parent?.invalidationHandler
     }
     
     func build() {
@@ -49,8 +54,7 @@ final class Node {
         }
     }
     
-    // Обновление для вызова update в screen
     func updateScreen() {
-        screen?.viewController = (screen?.vc())!
+        
     }
 }
