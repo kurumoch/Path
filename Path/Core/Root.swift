@@ -60,7 +60,7 @@ final class Root {
     }
     
     private func showRootScreen() {
-        guard let rootViewController = screen?.vc() else { return }
+        guard let rootViewController = screen?.viewController else { return }
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
     }
