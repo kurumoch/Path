@@ -12,36 +12,55 @@ import SwiftUI
 final class Root {
     
     private let window: UIWindow
-    var path: GenericPath {
-        didSet { update() }
-    }
-    
-    private var root: Node?
-    private var invalidated: [Node] = []
+    private let path: GenericPath
+    private var root: Node
+    private lazy var screen = buildScreenHierachy(root)
+    private lazy var map = [ObjectIdentifier: Screen]()
     
     init(window: UIWindow, @PathBuilder path: () -> any Path) {
         self.window = window
         self.path = path().composed
+        self.root = Node(parent: nil, path: self.path, environment: .init(presentationContext: { }))
         
-        update()
+        root.invalidationHandler = { [weak self] in self?.nodeDidInvalidate($0) }
+        self.path.append(to: root)
+    }
+    
+    func build() {
+        showRootScreen()
     }
     
     func update() {
-        if root == nil {
-            root = Node(parent: nil, path: path)
-            root?.invalidationHandler = { [weak self] in self?.invalidated.append($0) }
-            path.append(to: root!)
-            path.update(node: root!)
-            showRootScreen()
-        } else {
-            path.update(node: root!)
+        path.update(node: root)
+    }
+    
+    func nodeDidInvalidate(_ node: Node) {
+        screen = buildScreenHierachy(root)
+        node.environment.presentationContext()
+    }
+    
+    private func buildScreenHierachy(_ node: Node) -> Screen? {
+        guard let screen = node.screen else {
+            for child in node.children {
+                if let childScreenTree = buildScreenHierachy(child) {
+                    return childScreenTree
+                }
+            }
+            return nil
         }
+        var i = 0
+        for child in node.children {
+            if let childScreenTree = buildScreenHierachy(child) {
+                screen.addSubscreen(childScreenTree, at: i)
+                i += 1
+            }
+        }
+        
+        return screen
     }
     
     private func showRootScreen() {
-//        root?.updateScreen()
-        guard let rootScreen = root?.screen else { return }
-        let rootViewController = rootScreen.vc()
+        guard let rootViewController = screen?.vc() else { return }
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
     }

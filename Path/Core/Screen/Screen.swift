@@ -43,4 +43,8 @@ class Screen {
             children[i].index = i
         }
     }
+    
+    func update() {
+        
+    }
 }

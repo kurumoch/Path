@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        root?.build()
+        
         // Override point for customization after application launch.
         return true
     }

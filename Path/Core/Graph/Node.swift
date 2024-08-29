@@ -8,39 +8,43 @@
 import Foundation
 
 final class Node {
-    
-    private let parent: Node?
-    private var children: [Node] = []
-    var invalidationHandler: ((Node) -> ())?
+
+    let parent: Node?
+    var children: [Node] = []
     let path: GenericPath
-    private var coordinator: Any?
-    private var _screen: Screen?
-    var screen: Screen? {
-        get { _screen ?? child() }
-        set { _screen = newValue }
-    }
+    let environment: Environment
     
-    func child() -> Screen? {
-        children.first { $0.screen != nil }?.screen
-    }
+    var invalidationHandler: (Node) -> ()
     
-    init(parent: Node?, path: GenericPath) {
+    var screen: Screen?
+
+    init(
+        parent: Node?,
+        path: GenericPath,
+        environment: Environment
+    ) {
         self.parent = parent
         self.path = path
-        invalidationHandler = parent?.invalidationHandler
+        self.invalidationHandler = parent?.invalidationHandler ?? { _ in }
+        self.environment = environment
+    }
+    
+    convenience init(
+        parent: Node,
+        path: GenericPath
+    ) {
+        self.init(parent: parent, path: path, environment: parent.environment)
     }
     
     func build() {
-        coordinator = path.makePayload()
         path.append(to: self)
-        
-        children.compactMap { $0.screen }.enumerated().forEach {
-            _screen?.addSubscreen($0.element, at: $0.offset)
-        }
+    }
+    
+    func invalidate() {
+        invalidationHandler(self)
     }
     
     func addChild(at index: Int, child: Node) {
-        child.invalidationHandler = invalidationHandler
         children.insert(child, at: index)
     }
     
@@ -52,9 +56,5 @@ final class Node {
         if index < children.count {
             path.update(node: children[index])
         }
-    }
-    
-    func updateScreen() {
-        
     }
 }

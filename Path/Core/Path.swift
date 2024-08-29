@@ -29,20 +29,22 @@ import Foundation
                         }.presentationStyle(.modal)
                 }
             }.icon("Main")
- 
-            Payments { paymentType in
-                switch paymentType:
-                    case .c2c:
-                        C2C { info in
-                            C2CPayment { success in
-                                success
-                                    ? C2CSuccess { navigator.popToRoot() }
-                                    : C2CFailure { navigator.pop() }
+            
+            Stack {
+                Payments { paymentType in
+                    switch paymentType:
+                        case .c2c:
+                            C2C { info in
+                                C2CPayment { success in
+                                    success
+                                        ? C2CSuccess { navigator.popToRoot() }
+                                        : C2CFailure { navigator.pop() }
                             }
                         }
                     case .phoneTransfer:
                         PhoneTransfer()
                     // ...
+                }
             }
  
             About()

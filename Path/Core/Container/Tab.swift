@@ -14,8 +14,13 @@ struct Tab<Content: Path>: PrimitivePath {
     @PathBlockBuilder var content: () -> Content
     
     func append(to parent: Node) {
-        let node = Node(parent: parent, path: content().composed)
-        node.screen = TabScreen()
+        let screen = TabScreen()
+        let node = Node(
+            parent: parent,
+            path: content().composed,
+            environment: .init(presentationContext: { [weak screen] in screen?.update() })
+        )
+        node.screen = screen
         parent.addChild(at: 0, child: node)
         node.build()
     }
@@ -25,16 +30,19 @@ struct Tab<Content: Path>: PrimitivePath {
     }
     
     private class TabScreen: Screen {
+        
         override func vc() -> UITabBarController {
             let tabBarController = UITabBarController(nibName: nil, bundle: nil)
-            
-            let tabControllers = children.map { childScreen in
-                let navController = childScreen.vc()
-                return navController
-            }
-            
-            tabBarController.viewControllers = tabControllers
+            tabBarController.viewControllers = viewControllers
             return tabBarController
+        }
+        
+        var viewControllers: [UIViewController] {
+            children.map(\.viewController)
+        }
+        
+        override func update() {
+            (viewController as? UITabBarController)?.viewControllers = viewControllers
         }
     }
 }

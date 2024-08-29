@@ -11,6 +11,7 @@
 		BA30991D2C54C988003859EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA30991C2C54C988003859EB /* AppDelegate.swift */; };
 		BA3099262C54C989003859EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA3099252C54C989003859EB /* Assets.xcassets */; };
 		BA3099292C54C989003859EB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = BA3099282C54C989003859EB /* Base */; };
+		BAC0F12A2C80797E00297E58 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC0F1292C80797E00297E58 /* Environment.swift */; };
 		BAE732212C565B0500773DB2 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE732202C565B0500773DB2 /* Path.swift */; };
 		BAE732232C56628900773DB2 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE732222C56628900773DB2 /* Root.swift */; };
 		BAE732252C566AC600773DB2 /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE732242C566AC600773DB2 /* PathBuilder.swift */; };
@@ -34,6 +35,7 @@
 		BA3099252C54C989003859EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA3099282C54C989003859EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA30992A2C54C989003859EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAC0F1292C80797E00297E58 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		BAE732202C565B0500773DB2 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		BAE732222C56628900773DB2 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		BAE732242C566AC600773DB2 /* PathBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathBuilder.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				BAE7323B2C5687E700773DB2 /* Node.swift */,
 				BAE7323D2C56892300773DB2 /* GenericPath.swift */,
 				BAE732432C569FF300773DB2 /* ComposedPath.swift */,
+				BAC0F1292C80797E00297E58 /* Environment.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				BAE7322F2C5679C900773DB2 /* MainPath.swift in Sources */,
 				BAE732232C56628900773DB2 /* Root.swift in Sources */,
 				BAE732272C566D7400773DB2 /* TuplePath.swift in Sources */,
+				BAC0F12A2C80797E00297E58 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
