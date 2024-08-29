@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let window = UIWindow()
         self.window = window
-//        window.makeKeyAndVisible()
         
         root = Root(window: window) {
             Tab {
@@ -28,6 +28,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         }
                     }
                 }
+                
+                MainPath {
+                    MainPath {
+                        MainPath()
+                    }
+                }
+                
+                SwiftUIPath(input: 42) { num, out in
+                    Button {
+                        out(52)
+                    } label: {
+                        Text("Tap \(num)")
+                    }
+                } output: { num in
+                    MainPath()
+                }
+
                 
                 MainPath()
             }

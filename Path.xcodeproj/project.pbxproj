@@ -12,6 +12,7 @@
 		BA3099262C54C989003859EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA3099252C54C989003859EB /* Assets.xcassets */; };
 		BA3099292C54C989003859EB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = BA3099282C54C989003859EB /* Base */; };
 		BAC0F12A2C80797E00297E58 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC0F1292C80797E00297E58 /* Environment.swift */; };
+		BAC0F12C2C80BE7800297E58 /* SwiftUIPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC0F12B2C80BE7800297E58 /* SwiftUIPath.swift */; };
 		BAE732212C565B0500773DB2 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE732202C565B0500773DB2 /* Path.swift */; };
 		BAE732232C56628900773DB2 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE732222C56628900773DB2 /* Root.swift */; };
 		BAE732252C566AC600773DB2 /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE732242C566AC600773DB2 /* PathBuilder.swift */; };
@@ -36,6 +37,7 @@
 		BA3099282C54C989003859EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA30992A2C54C989003859EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAC0F1292C80797E00297E58 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		BAC0F12B2C80BE7800297E58 /* SwiftUIPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPath.swift; sourceTree = "<group>"; };
 		BAE732202C565B0500773DB2 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		BAE732222C56628900773DB2 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		BAE732242C566AC600773DB2 /* PathBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathBuilder.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				BAE7322E2C5679C900773DB2 /* MainPath.swift */,
+				BAC0F12B2C80BE7800297E58 /* SwiftUIPath.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				BAE732342C56836A00773DB2 /* Tab.swift in Sources */,
 				BAE7323E2C56892300773DB2 /* GenericPath.swift in Sources */,
 				BA10E4232C5D53EF00F1A4FB /* Screen.swift in Sources */,
+				BAC0F12C2C80BE7800297E58 /* SwiftUIPath.swift in Sources */,
 				BAE732422C568F4D00773DB2 /* PrimitivePath.swift in Sources */,
 				BAE7323C2C5687E700773DB2 /* Node.swift in Sources */,
 				BAE732322C56834200773DB2 /* PathRepresentable.swift in Sources */,

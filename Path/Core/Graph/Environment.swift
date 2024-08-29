@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 struct Environment {
-    var presentationContext: () -> ()
+    var presentationContext: (() -> ())
 }

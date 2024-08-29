@@ -12,7 +12,7 @@ final class Node {
     let parent: Node?
     var children: [Node] = []
     let path: GenericPath
-    let environment: Environment
+    let environment: Environment?
     
     var invalidationHandler: (Node) -> ()
     
@@ -21,7 +21,7 @@ final class Node {
     init(
         parent: Node?,
         path: GenericPath,
-        environment: Environment
+        environment: Environment?
     ) {
         self.parent = parent
         self.path = path
@@ -45,7 +45,12 @@ final class Node {
     }
     
     func addChild(at index: Int, child: Node) {
-        children.insert(child, at: index)
+        if index >= children.count {
+            children.insert(child, at: index)
+        } else {
+            children[index] = child
+        }
+        
     }
     
     func remove(at index: Int) {

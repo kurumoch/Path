@@ -20,7 +20,7 @@ final class Root {
     init(window: UIWindow, @PathBuilder path: () -> any Path) {
         self.window = window
         self.path = path().composed
-        self.root = Node(parent: nil, path: self.path, environment: .init(presentationContext: { }))
+        self.root = Node(parent: nil, path: self.path, environment: nil)
         
         root.invalidationHandler = { [weak self] in self?.nodeDidInvalidate($0) }
         self.path.append(to: root)
@@ -36,7 +36,11 @@ final class Root {
     
     func nodeDidInvalidate(_ node: Node) {
         screen = buildScreenHierachy(root)
-        node.environment.presentationContext()
+        if let environment = node.environment {
+            environment.presentationContext()
+        } else {
+            node.screen?.update()
+        }
     }
     
     private func buildScreenHierachy(_ node: Node) -> Screen? {

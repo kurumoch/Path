@@ -32,9 +32,12 @@ protocol PathRepresentable: Path, PrimitivePath where Self.Body == Never {
 
 extension PathRepresentable {
     func append(to parent: Node) {
+        var screen: RepresentableScreen?
         let node = Node(parent: parent, path: self)
         let context = PathRepresentableContext(wrapping: node)
-        node.screen = RepresentableScreen { make(context: context) }
+        screen = RepresentableScreen { make(context: context) }
+        
+        node.screen = screen
         parent.addChild(at: 0, child: node)
     }
 }
@@ -48,5 +51,10 @@ private class RepresentableScreen: Screen {
     
     override func vc() -> UIViewController {
         factory()
+    }
+    
+    override func update() {
+        guard let vc = children.first?.viewController else { return }
+        viewController.present(vc, animated: true)
     }
 }

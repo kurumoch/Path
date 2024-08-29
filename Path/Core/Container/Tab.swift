@@ -18,7 +18,7 @@ struct Tab<Content: Path>: PrimitivePath {
         let node = Node(
             parent: parent,
             path: content().composed,
-            environment: .init(presentationContext: { [weak screen] in screen?.update() })
+            environment: nil
         )
         node.screen = screen
         parent.addChild(at: 0, child: node)

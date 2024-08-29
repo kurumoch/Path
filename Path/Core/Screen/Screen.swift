@@ -25,6 +25,9 @@ class Screen {
     lazy var viewController = vc()
     
     func addSubscreen(_ screen: Screen, at index: Int) {
+        if index < children.count, screen === children[index] {
+            return
+        }
         self.children.insert(screen, at: index)
         screen.parent = self
         screen.window = window
