@@ -55,6 +55,6 @@ As you can see, some paths can return values, which can be used as inputs to ini
 # Todo
 
 - Implement `.icon` modifier
-- Define `navigator` object
+- Implement `navigator` object
 - Implement `.presentationStyle` modifier (including custom styles)
 - Support deeplinking
