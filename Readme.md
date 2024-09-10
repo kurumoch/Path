@@ -1,5 +1,3 @@
-# What is it
-
 This is a proof of concept for declarative navigation using resultBuilders. Each `Path` object can represent either a SwiftUI `View`, a UIKit `UIViewController`, or a nested `Path`.
 
 ```swift
